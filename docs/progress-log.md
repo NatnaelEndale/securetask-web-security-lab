@@ -22,13 +22,13 @@ Status: In progress
 - [x] Selected GitHub Markdown documentation.
 - [x] Established milestone-based workflow.
 
-### Pending
+### Completed
 
-- [ ] Populate project documentation.
-- [ ] Verify GitHub synchronization.
-- [ ] Prepare Ubuntu Server ISO.
-- [ ] Verify available VM resources.
-- [ ] Finalize VM network configuration.
+- [x] Populate project documentation.
+- [x] Verify GitHub synchronization.
+- [x] Prepare Ubuntu Server ISO.
+- [x] Verify available VM resources.
+- [x] Finalize VM network configuration.
 
 ### Notes
 
@@ -40,8 +40,8 @@ Security assessment will use Kali Linux VM.
 
 ## Future Milestones
 
-- [ ] M0 — Planning and preparation.
-- [ ] M1 — Infrastructure and hosting.
+- [x] M0 — Planning and preparation.
+- [x] M1 — Infrastructure and hosting.
 - [ ] M2 — Frontend development.
 - [ ] M3 — Backend development.
 - [ ] M4 — Database integration.
@@ -50,7 +50,21 @@ Security assessment will use Kali Linux VM.
 
 ---
 
-## Lessons Learned
+#### M1 — Nginx Installation
 
-Add technical concepts, problems, solutions,
-and important observations as the project progresses.
+**Completed:**
+- [x] Installed Nginx.
+- [x] Enabled and started Nginx.
+- [x] Verified Nginx is listening on TCP port 80.
+- [x] Tested HTTP response using curl.
+- [x] Accessed the welcome page from Ubuntu host.
+
+**Verification:**
+- HTTP response: 200 OK
+- Server IP: 192.168.56.10
+- Port: 80
+
+**What I learned:**
+- Nginx acts as a web server.
+- HTTP requests use TCP port 80 by default.
+- curl can inspect HTTP responses.
