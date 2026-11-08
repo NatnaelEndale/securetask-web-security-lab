@@ -1,65 +1,190 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecureTask | Infrastructure Lab</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <title>SecureTask | Dashboard</title>
+
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
 </head>
+
 <body>
-    <header class="navbar">
-        <a href="/" class="logo">SecureTask<span>.</span></a>
-        <span class="status">
-            <span class="status-dot"></span>
-            Server Online
-        </span>
-    </header>
 
-    <main>
-        <section class="hero">
-            <p class="eyebrow">WEB ENGINEERING & SECURITY LAB</p>
+    <div class="app-shell">
 
-            <h1>Build. Deploy.<br><span>Secure.</span></h1>
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
 
-            <p class="description">
-                Welcome to SecureTask, a hands-on project exploring
-                web application engineering, infrastructure,
-                deployment, and cybersecurity.
-            </p>
-
-            <a href="#system-status" class="button">
-                Explore our infrastructure
+            <a href="#overview" class="brand">
+                <span class="brand-mark">ST</span>
+                <span>SecureTask</span>
             </a>
-        </section>
 
-        <section id="system-status" class="status-section">
-            <h2>Infrastructure status</h2>
+            <div class="sidebar-navigation">
 
-            <div class="status-grid">
-                <article class="status-card">
-                    <span class="card-label">Operating System</span>
-                    <h3>Ubuntu Server</h3>
-                    <p>Hosting environment</p>
-                </article>
+                <p class="sidebar-label">WORKSPACE</p>
 
-                <article class="status-card">
-                    <span class="card-label">Web Server</span>
-                    <h3>Nginx</h3>
-                    <p>Running on HTTP port 80</p>
-                </article>
+                <nav aria-label="Main navigation">
 
-                <article class="status-card">
-                    <span class="card-label">Deployment</span>
-                    <h3>Successful</h3>
-                    <p>First static webpage</p>
-                </article>
+                    <a href="#overview"
+                       class="nav-link active"
+                       aria-current="page">
+                        <span aria-hidden="true">⌂</span>
+                        Overview
+                    </a>
+
+                    <a href="#tasks" class="nav-link">
+                        <span aria-hidden="true">✓</span>
+                        Tasks
+                    </a>
+
+                </nav>
+
             </div>
-        </section>
-    </main>
 
-    <footer>
-        SecureTask &mdash; Infrastructure and Web Hosting Lab
-    </footer>
+            <div class="sidebar-bottom">
+                <div class="profile-avatar">V</div>
+
+                <div class="profile-info">
+                    <strong>Personal Workspace</strong>
+                    <small>Local prototype</small>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content" id="overview">
+
+            <!-- Dashboard Header -->
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">WORKSPACE</p>
+                    <h1>Overview</h1>
+                </div>
+
+                <div class="prototype-label">
+                    <span class="status-dot"></span>
+                    Frontend Prototype
+                </div>
+
+            </header>
+
+
+            <!-- Welcome Section -->
+            <section class="welcome-card">
+
+                <div class="welcome-content">
+
+                    <p class="welcome-label">YOUR WORKSPACE</p>
+
+                    <h2>Make room for focused work.</h2>
+
+                    <p>
+                        Organize your tasks, track your progress,
+                        and stay focused on what matters.
+                    </p>
+
+                </div>
+
+                <div class="welcome-decoration" aria-hidden="true">
+                    ST
+                </div>
+
+            </section>
+
+
+            <!-- Statistics -->
+            <section class="stats-grid"
+                     aria-label="Task statistics">
+
+                <article class="stat-card">
+
+                    <p class="stat-label">Total Tasks</p>
+
+                    <h2 class="stat-value" id="total-tasks">0</h2>
+
+                    <p class="stat-description">
+                        All your tasks
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <p class="stat-label">Active Tasks</p>
+
+                    <h2 class="stat-value" id="active-tasks">0</h2>
+
+                    <p class="stat-description">
+                        Waiting to be completed
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <p class="stat-label">Completed Tasks</p>
+
+                    <h2 class="stat-value" id="completed-tasks">0</h2>
+
+                    <p class="stat-description">
+                        Successfully finished
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- Tasks Section -->
+            <section class="tasks-section" id="tasks">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">YOUR WORK</p>
+                        <h2>My Tasks</h2>
+                    </div>
+
+                    <span class="task-count" id="task-count">0 tasks</span>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div 
+			class="empty-state"
+			id="task-list"
+			aria-live="polite">
+                  
+                </div>
+
+            </section>
+
+
+            <!-- Footer -->
+            <footer class="footer">
+
+                <p>
+                    SecureTask &mdash;
+                    Web Engineering &amp; Security Lab
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
 </body>
 </html>
+
