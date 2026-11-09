@@ -508,15 +508,18 @@ a {
 
 .task-list {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 14px;
+    width: 100%;
 }
 
 .task-card {
     background: var(--surface);
     padding: 22px;
-
     border: 1px solid var(--border);
     border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .task-card-header {
@@ -535,6 +538,10 @@ a {
 .task-card p {
     color: var(--text-secondary);
     font-size: 13px;
+
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 .task-status {
@@ -560,3 +567,367 @@ a {
     color: var(--text-secondary);
     text-decoration: line-through;
 }
+
+/* ========================================
+   11. Task Actions
+======================================== */
+
+.task-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.task-action-button {
+    padding: 8px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: white;
+    color: var(--text-primary);
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.task-action-button:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.task-action-button.delete-button {
+    color: #dc2626;
+}
+
+.task-action-button.delete-button:hover {
+    background: #fef2f2;
+    border-color: #dc2626;
+}
+
+.task-action-button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   12. Create and Edit Task Form
+======================================== */
+
+.section-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.primary-button {
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.primary-button:hover {
+    background: #1d4ed8;
+}
+
+.primary-button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.task-form {
+    display: grid;
+    gap: 18px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    padding: 24px;
+    margin-bottom: 22px;
+}
+
+.task-form[hidden] {
+    display: none;
+}
+
+.task-form h3 {
+    font-size: 18px;
+}
+
+.form-group {
+    display: grid;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: white;
+    color: var(--text-primary);
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid #93c5fd;
+    border-color: var(--primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+@media (max-width: 650px) {
+    .section-actions {
+        gap: 8px;
+    }
+
+    .task-count {
+        display: none;
+    }
+}
+
+/* ========================================
+   13. Task Search and Filters
+======================================== */
+
+.task-toolbar {
+    display: flex;
+    align-items: end;
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.search-container,
+.filter-container {
+    display: grid;
+    gap: 7px;
+}
+
+.search-container {
+    flex: 1;
+}
+
+.search-container label,
+.filter-container label {
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.search-container input,
+.filter-container select {
+    height: 42px;
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: white;
+    color: var(--text-primary);
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.search-container input:focus,
+.filter-container select:focus {
+    outline: 2px solid #93c5fd;
+    border-color: var(--primary);
+}
+
+@media (max-width: 550px) {
+    .task-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container,
+    .filter-container {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   14. Responsive Design Improvements
+======================================== */
+
+/* Prevent unintended horizontal overflow */
+
+html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+}
+
+
+/* Allow content to wrap when necessary */
+
+.topbar,
+.section-heading {
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.task-card-header {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.task-actions {
+    flex-wrap: wrap;
+}
+
+.task-card {
+    min-width: 0;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+
+/* Tablet adjustments */
+
+@media (max-width: 850px) {
+
+    .main-content {
+        padding: 28px;
+    }
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .stats-grid {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+
+}
+
+
+/* Mobile adjustments */
+
+@media (max-width: 650px) {
+
+    .main-content {
+        width: 100%;
+        padding: 22px 16px;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        flex: 1 1 120px;
+        justify-content: center;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .topbar h1 {
+        font-size: 24px;
+    }
+
+    .welcome-card {
+        padding: 24px 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+    }
+
+    .section-actions {
+        flex-wrap: wrap;
+    }
+
+    .task-form {
+        padding: 18px;
+    }
+
+    .task-card {
+        padding: 18px;
+    }
+
+    .task-toolbar {
+        width: 100%;
+    }
+
+    .task-actions button,
+    .form-actions button {
+        min-height: 42px;
+    }
+
+}
+
