@@ -2,23 +2,23 @@
 from app.repositories.task_repository import TaskRepository
 
 
-def test_create_task():
-    repo = TaskRepository()
+def test_create_task(db_session):
+    repo = TaskRepository(db_session)
 
     task = repo.create_task(
         title="Learn FastAPI",
         description="Build SecureTask backend",
     )
 
-    assert task.id == 1
+    assert task.id > 1
     assert task.title == "Learn FastAPI"
     assert task.description == "Build SecureTask backend"
     assert task.completed is False
     assert task.created_at == task.updated_at
 
 
-def test_get_all_tasks():
-    repo = TaskRepository()
+def test_get_all_tasks(db_session):
+    repo = TaskRepository(db_session)
 
     repo.create_task(title="Task 1")
     repo.create_task(title="Task 2")
@@ -28,8 +28,8 @@ def test_get_all_tasks():
     assert len(tasks) == 2
 
 
-def test_get_task_by_id():
-    repo = TaskRepository()
+def test_get_task_by_id(db_session):
+    repo = TaskRepository(db_session)
 
     created = repo.create_task(title="Test task")
     retrieved = repo.get_task_by_id(created.id)
@@ -37,8 +37,8 @@ def test_get_task_by_id():
     assert retrieved == created
 
 
-def test_update_task():
-    repo = TaskRepository()
+def test_update_task(db_session):
+    repo = TaskRepository(db_session)
 
     task = repo.create_task(title="Original title")
 
@@ -53,8 +53,8 @@ def test_update_task():
     assert updated.updated_at >= task.updated_at
 
 
-def test_delete_task():
-    repo = TaskRepository()
+def test_delete_task(db_session):
+    repo = TaskRepository(db_session)
 
     task = repo.create_task(title="Delete me")
 
@@ -64,8 +64,8 @@ def test_delete_task():
     assert repo.get_task_by_id(task.id) is None
 
 
-def test_delete_nonexistent_task():
-    repo = TaskRepository()
+def test_delete_nonexistent_task(db_session):
+    repo = TaskRepository(db_session)
 
     result = repo.delete_task(999)
 

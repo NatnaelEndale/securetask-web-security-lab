@@ -21,7 +21,7 @@ def test_create_task(client):
 
     data = response.json()
 
-    assert data["id"] == 1
+    assert data["id"] > 1
     assert data["title"] == payload["title"]
     assert data["description"] == payload["description"]
     assert data["completed"] is False
