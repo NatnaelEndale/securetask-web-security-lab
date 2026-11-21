@@ -8,13 +8,13 @@ Methodology: Milestone-based
 
 ---
 
-## Phase 0 — Preparation and Planning
+## Project Milestone Status
 
 - [x] M0 — Planning and preparation.
 - [x] M1 — Infrastructure and hosting.
-- [ ] M2 — Frontend development.
-- [ ] M3 — Backend development.
-- [ ] M4 — Database integration.
+- [x] M2 — Frontend development.
+- [x] M3 — Backend development.
+- [x] M4 — Database integration.
 - [ ] M5 — Security assessment.
 - [ ] M6 — Remediation and hardening.
 
