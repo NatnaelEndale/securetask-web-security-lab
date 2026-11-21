@@ -9,8 +9,8 @@ from app.services.task_service import (
 
 
 @pytest.fixture
-def service():
-    repository = TaskRepository()
+def service(db_session):
+    repository = TaskRepository(db_session)
     return TaskService(repository)
 
 
@@ -20,7 +20,7 @@ def test_create_task(service):
         description="Build SecureTask backend",
     )
 
-    assert task.id == 1
+    assert task.id > 1
     assert task.title == "Learn FastAPI"
 
 

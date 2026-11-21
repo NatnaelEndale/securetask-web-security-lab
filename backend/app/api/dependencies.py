@@ -1,15 +1,15 @@
+from fastapi import Depends
 
+from sqlalchemy.orm import Session
+
+from app.database.dependencies import get_db
 from app.repositories.task_repository import TaskRepository
 from app.services.task_service import TaskService
 
 
-# Create one shared repository instance.
-task_repository = TaskRepository()
+def get_task_service(db: Session = Depends(get_db)) -> TaskService:
+    """Provide a task service using the request's database session."""
 
-# Inject the shared repository into the service.
-task_service = TaskService(task_repository)
+    repository = TaskRepository(db)
 
-
-def get_task_service() -> TaskService:
-    """Provide the shared task service to API routes."""
-    return task_service
+    return TaskService(repository)
